@@ -4,6 +4,7 @@ user1_wins, user2_wins = 0, 0
 
 options = ["rock", "paper", "scissors", "lizard", "spock"]
 
+# Functions
 def get_user_input(user):
     while True:
         user_input = getpass(f"{user}, type Rock/Paper/Scissors/Lizard/Spock or Q to quit: ").lower()
@@ -15,7 +16,7 @@ def get_user_input(user):
         else:
             print(f"Invalid input for {user}. Please try again.")
 
-
+# Main game loop
 while True:
     user1_input = get_user_input("User 1")
     if user1_input == "q":
@@ -50,6 +51,7 @@ while True:
         print("\nUser 2 won!")
         user2_wins += 1
 
+# Print statements
 print(f"User 1 won {user1_wins} times.")
 print(f"User 2 won {user2_wins} times.")
 print("Goodbye!")
