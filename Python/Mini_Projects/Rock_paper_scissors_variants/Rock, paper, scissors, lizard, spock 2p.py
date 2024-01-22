@@ -4,20 +4,26 @@ user1_wins, user2_wins = 0, 0
 
 options = ["rock", "paper", "scissors", "lizard", "spock"]
 
+def get_user_input(user):
+    while True:
+        user_input = getpass(f"{user}, type Rock/Paper/Scissors/Lizard/Spock or Q to quit: ").lower()
+        if user_input == "q":
+            break
+
+        if user_input in options:
+            return user_input
+        else:
+            print(f"Invalid input for {user}. Please try again.")
+
+
 while True:
-    user1_input = getpass("User 1, type Rock/Paper/Scissors/Lizard/Spock or Q to quit: ").lower()
+    user1_input = get_user_input("User 1")
     if user1_input == "q":
         break
 
-    if user1_input not in options:
-        continue
-
-    user2_input = getpass("User 2, type Rock/Paper/Scissors/Lizard/Spock or Q to quit: ").lower()
+    user2_input = get_user_input("User 2")
     if user2_input == "q":
         break
-
-    if user2_input not in options:
-        continue
 
     print(f"User 1 chose {user1_input}")
     print(f"User 2 chose {user2_input}")
