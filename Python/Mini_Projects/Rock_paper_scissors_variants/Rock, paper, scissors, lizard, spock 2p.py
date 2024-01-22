@@ -25,7 +25,7 @@ while True:
     if user2_input == "q":
         break
 
-    print(f"User 1 chose {user1_input}")
+    print(f"\nUser 1 chose {user1_input}")
     print(f"User 2 chose {user2_input}")
 
     if (
@@ -40,14 +40,14 @@ while True:
         (user1_input == "spock" and user2_input == "rock") or
         (user1_input == "rock" and user2_input == "lizard")):
 
-        print("User 1 won!")
+        print("\nUser 1 won!")
         user1_wins += 1
 
     elif user1_input == user2_input:
-        print("It's a tie!")
+        print("\nIt's a tie!")
 
     else:
-        print("User 2 won!")
+        print("\nUser 2 won!")
         user2_wins += 1
 
 print(f"User 1 won {user1_wins} times.")
