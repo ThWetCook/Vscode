@@ -1,33 +1,27 @@
 from getpass import getpass
 
-user1_wins, user2_wins = 0, 0
+user1_wins = 0
+user2_wins = 0
 
-options = ["rock", "paper", "scissors", "lizard", "spock"]
+options = ["rock", "paper", "scissors", "lizard", "spock", "100%"]
 
-# Functions
-def get_user_input(user):
-    while True:
-        user_input = getpass(f"{user}, type Rock/Paper/Scissors/Lizard/Spock or Q to quit: ").lower()
-        if user_input == "q":
-            break
-
-        if user_input in options:
-            return user_input
-        else:
-            print(f"Invalid input for {user}. Please try again.")
-
-# Main game loop
 while True:
-    user1_input = get_user_input("User 1")
+    user1_input = input("Player 1, type Rock/Paper/Scissors/Lizard/Spock or Q to quit: ").lower()
     if user1_input == "q":
         break
 
-    user2_input = get_user_input("User 2")
+    if user1_input not in options:
+        continue
+
+    user2_input = input("Player 2, type Rock/Paper/Scissors/Lizard/Spock or Q to quit: ").lower()
     if user2_input == "q":
         break
 
-    print(f"\nUser 1 chose {user1_input}")
-    print(f"User 2 chose {user2_input}")
+    if user2_input not in options:
+        continue
+
+    print("\nPlayer 1 picked", user1_input + ".")
+    print("Player 2 picked", user2_input + ".")
 
     if (
         (user1_input == "rock" and user2_input == "scissors") or
@@ -40,18 +34,27 @@ while True:
         (user1_input == "paper" and user2_input == "spock") or
         (user1_input == "spock" and user2_input == "rock") or
         (user1_input == "rock" and user2_input == "lizard")):
-
-        print("\nUser 1 won!")
+        print("\nPlayer 1 won!")
         user1_wins += 1
 
     elif user1_input == user2_input:
-        print("\nIt's a tie!")
+        print("\nIt's a tie! Nobody earns a point.")
+
+    elif user1_input == "100%" and user2_input != "100%":
+        print("\nPlayer 1 won!")
+        user1_wins += 1
+
+    elif user2_input == "100%" and user2_input != "100%":
+        print("\nPlayer 2 won!")
+        user2_wins += 1
+    
+    elif user1_input == "100%" and user2_input == "100%":
+        print("\nIt's a tie! Nobody earns a point.")
 
     else:
-        print("\nUser 2 won!")
+        print("\nPlayer 2 won!")
         user2_wins += 1
 
-# Print statements
-print(f"User 1 won {user1_wins} times.")
-print(f"User 2 won {user2_wins} times.")
+print(f"Player 1 won {user1_wins} times.")
+print(f"Player 2 won {user2_wins} times.")
 print("Goodbye!")
