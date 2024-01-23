@@ -1,30 +1,27 @@
-from getpass import getpass
+import os
+
+def get_input_and_clear(prompt=""):
+    print(prompt, end='', flush=True)
+    user_input = input()
+    os.system('cls' if os.name == 'nt' else 'clear')  # Clear the screen after Enter is pressed
+    return user_input
 
 user1_wins = 0
 user2_wins = 0
 
 options = ["rock", "paper", "scissors", "lizard", "spock", "100%"]
 
-""" Scissors cuts Paper
-Paper covers Rock
-Rock crushes Lizard
-Lizard poisons Spock
-Spock smashes Scissors
-Scissors decapitates Lizard
-Lizard eats Paper
-Paper disproves Spock
-Spock vaporizes Rock
-(and as it always has) Rock crushes Scissors """
-
 while True:
-    user1_input = input("Player 1, type Rock/Paper/Scissors/Lizard/Spock or Q to quit: ").lower()
+    user1_input = get_input_and_clear("Player 1, type Rock/Paper/Scissors/Lizard/Spock or Q to quit: ").lower()
     if user1_input == "q":
         break
 
     if user1_input not in options:
         continue
 
-    user2_input = input("Player 2, type Rock/Paper/Scissors/Lizard/Spock or Q to quit: ").lower()
+    os.system('cls' if os.name == 'nt' else 'clear')  # Clear the screen before prompting user2
+
+    user2_input = get_input_and_clear("Player 2, type Rock/Paper/Scissors/Lizard/Spock or Q to quit: ").lower()
     if user2_input == "q":
         break
 
@@ -66,6 +63,8 @@ while True:
         print("\nPlayer 2 won!")
         user2_wins += 1
 
-print(f"Player 1 won {user1_wins} times.")
+    input("\nPress Enter to continue...")
+
+print(f"\nPlayer 1 won {user1_wins} times.")
 print(f"Player 2 won {user2_wins} times.")
 print("Goodbye!")
