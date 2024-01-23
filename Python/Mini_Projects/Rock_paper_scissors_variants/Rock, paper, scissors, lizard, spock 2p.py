@@ -5,6 +5,17 @@ user2_wins = 0
 
 options = ["rock", "paper", "scissors", "lizard", "spock", "100%"]
 
+""" Scissors cuts Paper
+Paper covers Rock
+Rock crushes Lizard
+Lizard poisons Spock
+Spock smashes Scissors
+Scissors decapitates Lizard
+Lizard eats Paper
+Paper disproves Spock
+Spock vaporizes Rock
+(and as it always has) Rock crushes Scissors """
+
 while True:
     user1_input = input("Player 1, type Rock/Paper/Scissors/Lizard/Spock or Q to quit: ").lower()
     if user1_input == "q":
